@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div id="myId" class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light  sticky-top"
+         style="border: 1px solid yellow; position: absolute; margin-top: 5%;min-height: 548px">
+
+      <div style="position: absolute; max-height: 500px; overflow: auto;" class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+<!-- <a *ngIf="items.linkName == indexUrl" href="{{items['topicNavigationUrl']}}" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none"> -->
+       <span  class="fs-5 d-none d-sm-inline sticky-top text-primary">{{navTitleI}} </span>
+<!--  </a> -->
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start overflow-auto" id="menu">
+          <li>
+            <!--<a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>-->
+            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+              <li class="w-100" *ngFor="let topicVO of indexItem">
+                <a *ngIf="topicVO['subTopicStatus'] === 'N'" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="{{topicVO['topicNavigationUrl']}}" [queryParams]="{ order: topicVO['blogPageKey'] }" href="{{topicVO['topicNavigationUrl']}}"  class="nav-link px-0"> <span class="d-none d-sm-inline" >{{topicVO['topicTitle']}}</span></a>
+               <!-- <span *ngIf="topicVO['blogPageKey'] == ''" class="d-none d-sm-inline" >{{topicVO['topicTitle']}}</span> -->
+                <ul *ngIf="topicVO['subTopicStatus'] === 'Y'" class="collapse show nav flex-column ms-1" id="" data-bs-parent="#"> <p class="d-none d-sm-inline text-primary font-weight-bold">{{topicVO['topicTitle']}}</p>
+                  <li class="w-100" *ngFor="let subTopicVO of topicVO['subTopicVOs']">
+                    <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" routerLink="{{subTopicVO['subTopicNavigationUrl']}}" [queryParams]="{ order: subTopicVO['blogPageKey'] }" href="{{subTopicVO['subTopicNavigationUrl']}}" class="nav-link px-0"> <span class="d-none d-sm-inline">{{subTopicVO['subTopicTitle']}}</span></a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <hr>
+      </div>
+    </div>
+   <!-- <div id="myIds" class="col py-3 sticky-top" style=" border: 1px solid red;
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 17%;
+    max-height: 89%;
+    max-width: 83%;" >
+      <router-outlet (activate)="sendData($event)"></router-outlet>
+    </div>
+  </div>-->
+</div>
+

@@ -1,0 +1,18 @@
+<p>landing works!</p>
+<app-header (navTitle)="navTitle($event)" (navId)="navId($event)"></app-header>
+<div>{{activeUrl}}</div>
+
+<app-overview [navTitleI]="navTitleI" [navIdI]="navIdI" [componentName]="componentName"></app-overview>
+
+
+<!--<app-contents></app-contents>-->
+<div id="myIds" class="col py-3 sticky-top" style=" border: 1px solid red;
+    position: absolute;
+    margin-top: 5%;
+    margin-left: 17%;
+    max-height: 89%;
+    max-width: 83%;" >
+  <router-outlet  (activate)="sendData($event)"></router-outlet>
+</div>
+
+
